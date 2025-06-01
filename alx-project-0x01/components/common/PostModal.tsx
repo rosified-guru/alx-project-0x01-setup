@@ -1,5 +1,6 @@
 import { postData, PostModalProps } from "@/interfaces";
 import React, { useState } from "react";
+ ["import { PostData, PostModalProps }", "<PostData>"]
 
 const PostModal: React.FC<PostModalProps> = ({ onClose, onSubmit }) => {
     const [post, setPost] = useState<postData>({
