@@ -2,20 +2,21 @@ import UserCard from "@/components/common/UserCard";
 import Header from '@/components/layout/Header';
 import { UserProps } from '@/interfaces';
 
+interface UsersProps {
+  posts: UserProps[];
+}
 
-function UsersPage() {
-  const users = ['Alice', 'Bob', 'Charlie'];
-
+function Users({ posts }: UsersProps) {
   return (
     <div>
       <Header />
       <main className="p-6">
         <h2 className="text-2xl font-bold mb-4">Users</h2>
-        <ul className="list-disc pl-6">
-          {users.map((user, index) => (
-            <li key={index} className="text-gray-700">{user}</li>
+        <div className="space-y-4">
+          {posts.map((user) => (
+            <UserCard key={user.id} user={user} />
           ))}
-        </ul>
+        </div>
       </main>
       <Header />
     </div>
@@ -23,15 +24,14 @@ function UsersPage() {
 }
 
 export async function getStaticProps() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users")
-  const posts = await response.json()
+  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const posts = await response.json();
 
   return {
     props: {
-      posts
-    }
-  }
+      posts,
+    },
+  };
 }
 
-
-export default UsersPage;
+export default Users;

@@ -1,5 +1,10 @@
 import { UserProps } from "@/interfaces";
 
+interface Props {
+  user: UserProps;
+}
+
+
 const UserCard: React.FC<UserProps> = ({ name, email, id }) => {
     return (
         <div className="max-w-sm mx-auto my-4 p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
